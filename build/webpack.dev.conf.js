@@ -12,7 +12,7 @@ const portfinder = require('portfinder')
 const env = require('../config/dev.env') // 추가 1/3
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
-console.log("lll~~~ env : " + env);
+console.log("lll~~~ env : " + env.toString());
 
 const devWebpackConfig = merge(baseWebpackConfig, {
   module: {
