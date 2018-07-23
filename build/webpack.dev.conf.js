@@ -9,10 +9,10 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
-const env = require('../config/dev.env') // 추가 1/3
+// const env = require('../config/dev.env') // 추가 1/3
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
-console.log("lll~~~ env : " + env.toString());
+// console.log("lll~~~ env : " + env);
 
 const devWebpackConfig = merge(baseWebpackConfig, {
   module: {
@@ -23,7 +23,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
 
   // these devServer options should be customized in /config/index.js
   devServer: {
-    clientLogLevel: 'warning',
+    clientLogLevel: 'error',
     historyApiFallback: {
       rewrites: [
         {from: /.*/, to: path.posix.join(config.dev.assetsPublicPath, 'index.html')},
@@ -44,11 +44,11 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     watchOptions: {
       poll: config.dev.poll,
     },
-    disableHostCheck: true // 추가 2/3
+    // disableHostCheck: true // 추가 2/3
   },
   plugins: [
     new webpack.DefinePlugin({
-      'TEST': "TEST", // 추가 3/3
+      // 'TEST': "TEST", // 추가 3/3
       'process.env': require('../config/dev.env')
     }),
     new webpack.HotModuleReplacementPlugin(),

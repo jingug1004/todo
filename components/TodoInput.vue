@@ -1,9 +1,9 @@
 <template>
   <div class="inputBox shadow">
     <input type="text" v-model="newTodoItem" placeholder="Type What you have to do"
-           v-on:keyup.enter="addTodo">
+           v-on:keyup.enter="addTodo"> <!-- 검색어 입력하고 엔터 눌렀을 때 -->
     <span class="addContainer" v-on:click="addTodo">
-      <i class="addBtn fa fa-plus" aria-hidden="true"></i>
+      <i class="addBtn fa fa-plus" aria-hidden="true"></i> <!-- 검색어 입력하고 옆의 플러스 버튼 클릭했을 때 -->
     </span>
     <modal v-if="showModal" @close="showModal = false">
       <h3 slot="header">경고</h3>
