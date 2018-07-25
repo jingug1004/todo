@@ -16,7 +16,7 @@
 </template>
 
 <script>
-  import Modal from './common/Modal.vue';
+  import Modal from '../common/Modal.vue';
 
   export default {
     props: ['propsdata'],

@@ -1,16 +1,20 @@
 import Vue from 'vue'
-import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
+import Vuex from 'vuex';
+// import Router from 'vue-router'
+// import HelloWorld from '@/components/HelloWorld'
 
-Vue.use(Router)
+import state from '../store/state';
+import mutations from '../store/mutations';
+import actions from '../store/actions';
+import ES6Promise from 'es6-promise'
 
-export default new Router({
-  mode: 'history',
-  routes: [
-    {
-      path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
-    }
-  ]
+ES6Promise.polyfill();
+Vue.use(Vuex)
+
+const store = new Vuex.Store({
+  state,
+  mutations,
+  actions
 })
+
+export default store;
