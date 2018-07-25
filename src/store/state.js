@@ -8,8 +8,10 @@ export default {
   // contactlist: {
   //   pageno: 1, pagesize: CONF.PAGESIZE, totalcount: 0, contacts: [],
 
+  board: {no: 0, title: '', tel: '', address: '', photo: ''},
   title: null,
   boardlist: {
-    pageno: 1, pagesize: CONF.PAGESIZE, totalcount: 0, todoItems: []
+    pageno: 1, pagesize: CONF.PAGESIZE, totalcount: 51, board: []
   }
 }
+// totalcount => 원래 0이었음

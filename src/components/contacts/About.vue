@@ -7,61 +7,64 @@
       </div>
     </div>
     <TodoInput v-on:addTodo="addTodo"></TodoInput>
-    <TodoList v-bind:propsdata="todoItems" @removeTodo="removeTodo"></TodoList>
+    <!--<TodoList v-bind:propsdata="todoItems" @removeTodo="removeTodo"></TodoList>-->
+    <TodoList></TodoList>
     <TodoFooter v-on:removeAll="clearAll"></TodoFooter>
     <loading v-show="isloading"></loading>
   </div>
 </template>
 <script>
-//  import TodoHeader from '../../components/TodoHeader.vue';
   import TodoInput from '../about/TodoInput.vue';
   import TodoList from '../about/TodoList.vue';
   import TodoFooter from '../about/TodoFooter.vue';
 
   import CONF from '../../Config';
 
-  import Loading from '../../components/Loading.vue';
+//  import Loading from '../../components/Loading.vue';
   import {mapState} from 'vuex';
   import VueRouter from 'vue-router';
 
   export default {
     name: 'about',
-    components: {Loading},
-    computed: mapState(['isloading']),
-    data() {
-      return {
-        todoItems: []
-      }
+    components: {
+      'TodoInput': TodoInput,
+      'TodoList': TodoList,
+      'TodoFooter': TodoFooter
     },
-    created() {
-//      this.$axios.get('/api/getall').then((response) => {
-//        console.log("lll~~~ respnse : " + response);
+//    data() {
+//      return {
+//        todoItems: []
+//      }
+//    },
+//    created() {
+////      this.$axios.get('/api/getall').then((response) => {
+////        console.log("lll~~~ respnse : " + response);
+////      }).catch((ex) => {
+////        console.log("lll~~~ ex : " + ex);
+////      });
+//      this.$axios.get(CONF.GET_ALL, {params: {pageno: 1}}).then(response => {
+//        console.log("lll~~~ response 01 : " + response.status);
+//        console.log("lll~~~ response 01 : " + response.data[0].title);
+//        console.log("lll~~~ response 01 : " + response.data[1].title);
+//        console.log("lll~~~ response 01-00 : " + response.data.length);
+//        console.log("lll~~~ response 01-01 : " + response.data[0].title);
+//        console.log("lll~~~ response 01-02 : " + response.data.title); // 안 됨
+//        console.log("lll~~~ response 02 : " + JSON.stringify(response).status); // 안 됨
+//        let responseDataLength = response.data.length;
+//        if (responseDataLength > 0) {
+//          for (var i = 0; i < responseDataLength; i++) {
+//            this.todoItems.push(response.data[i].title);
+//          }
+//        }
 //      }).catch((ex) => {
 //        console.log("lll~~~ ex : " + ex);
 //      });
-      this.$axios.get(CONF.GET_ALL, {params: {pageno: 1}}).then(response => {
-        console.log("lll~~~ response 01 : " + response.status);
-        console.log("lll~~~ response 01 : " + response.data[0].title);
-        console.log("lll~~~ response 01 : " + response.data[1].title);
-        console.log("lll~~~ response 01-00 : " + response.data.length);
-        console.log("lll~~~ response 01-01 : " + response.data[0].title);
-        console.log("lll~~~ response 01-02 : " + response.data.title); // 안 됨
-        console.log("lll~~~ response 02 : " + JSON.stringify(response).status); // 안 됨
-        let responseDataLength = response.data.length;
-        if (responseDataLength > 0) {
-          for (var i = 0; i < responseDataLength; i++) {
-            this.todoItems.push(response.data[i].title);
-          }
-        }
-      }).catch((ex) => {
-        console.log("lll~~~ ex : " + ex);
-      });
-//      if (localStorage.length > 0) {
-//        for (var i = 0; i < localStorage.length; i++) {
-//          this.todoItems.push(localStorage.key(i));
-//        }
-//      }
-    },
+////      if (localStorage.length > 0) {
+////        for (var i = 0; i < localStorage.length; i++) {
+////          this.todoItems.push(localStorage.key(i));
+////        }
+////      }
+//    },
     methods: {
       clearAll() {
 //        localStorage.clear();

@@ -34,5 +34,10 @@ export default {
   },
   [Constant.FETCH_CONTACTS]: (state, payload) => {
     state.contactlist = payload.contactlist;
+  },
+
+  [Constant.CONST_GET_ALL]: (state, payload) => {         // 게시글 전체 가져오기
+    state.boardlist = payload.boardlist;
   }
+
 }

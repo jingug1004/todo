@@ -1,9 +1,9 @@
 <template>
   <section>
     <transition-group name="list" tag="ul">
-      <li v-for="(todoItem, index) in propsdata" :key="todoItem" class="shadow">
+      <li v-for="(board, index) in boardlist.todoItems" :key="todoItem" class="shadow">
         <i class="checkBtn fa fa-check" aria-hidden="true"></i>
-        {{todoItem}}
+        {{board.title}}
         <span class="removeBtn" type="button" @click="removeTodo(todoItem, index)">
           <i class="fa fa-trash-o" aria-hidden="true"></i>
         </span>
@@ -56,7 +56,7 @@
       },
     watch: {
       '$route': function (to, from) {
-        if (to.query.page && to.query.page != this.contactlist.pageno) {
+        if (to.query.page && to.query.page != this.boardlist.pageno) {
           var page = to.query.page;
           this.$store.dispatch(Constant.GET_ALL, {pageno: page});
           this.$refs.pagebuttons.selected = page - 1;

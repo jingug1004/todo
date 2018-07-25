@@ -1,5 +1,6 @@
 import contactAPI from '../api/ContactsAPI';
 import Constant from '../constant';
+import store from "../router/index";
 
 export default {
   [Constant.ADD_CONTACT_FORM]: (store) => { //입력폼 나타내기 02/09      01/09
@@ -102,5 +103,21 @@ export default {
   },
   [Constant.INITIALIZE_CONTACT_ONE]: (store) => {
     store.commit(Constant.INITIALIZE_CONTACT_ONE);
+  },
+
+  /**/
+
+  [Constant.CONST_GET_ALL]: (store, payload) => {     // 게시글 전체 가져오기
+    var pageno;
+    if (typeof payload === "undefined" || typeof payload.pageno === "undefined") {
+      pageno = 1;
+    } else {
+      pageno = payload.pageno;
+    }
+    var pagesize = store.state.boardlist.pagesize;
+    contactAPI.constGetAll(pageno, pagesize)
+      .then((response) => {
+        store.commit(Constant.CONST_GET_ALL, {boardlist: response.data})
+      });
   }
 }

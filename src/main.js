@@ -26,9 +26,8 @@ const router = new VueRouter({
   routes: [
     {path: '/', name: 'HelloWorld', component: HelloWorld},
     {path: '/api/home', name: 'home', component: Home},
-    {path: '/about', name: 'aboout', component: About},
-    {
-      path: '/contacts', name: 'contacts', component: ContactList, children: [
+    {path: '/about/api', name: 'about', component: About},
+    {path: '/contacts', name: 'contacts', component: ContactList, children: [
       {path: 'add', name: 'addcontact', component: ContactForm},
       {path: 'update/:no', name: 'updatecontact', component: ContactForm, props: true},
       {path: 'photo/:no', name: 'updatephoto', component: UpdatePhoto, props: true}
