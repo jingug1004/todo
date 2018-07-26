@@ -3,7 +3,7 @@
     <TodoHeader></TodoHeader>
     <div class="btn-group">
       <router-link to="/api/home" class="addContainer addBtn">Home</router-link>
-      <router-link to="/about/api" class="addContainer addBtn">About</router-link>
+      <router-link to="/about" class="addContainer addBtn">About</router-link>
       <router-link to="/contacts" class="addContainer addBtn">Contacts</router-link>
     </div>
     <!--<transition name="flip" mode="out-in">-->
@@ -16,13 +16,13 @@
 
   import TodoHeader from './components/about/TodoHeader.vue';
 
-  import Loading from './components/Loading.vue';
+//  import Loading from './components/Loading.vue';
   import {mapState} from 'vuex';
 
   export default {
     name: 'app',
-    components: {Loading},
-    computed: mapState(['isloading']),
+//    components: {Loading},
+//    computed: mapState(['isloading']),
     components: {
       'TodoHeader': TodoHeader
     }

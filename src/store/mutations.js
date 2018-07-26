@@ -1,6 +1,8 @@
 import Constant from '../constant';
 import state from "./state";
 
+console.log("lll~~~ Mutations 00 : ");
+
 //상태를 변경하는 기능만을 뽑아서...
 export default {
   [Constant.FETCH_CONTACTS]: (state, payload) => {
@@ -37,6 +39,7 @@ export default {
   },
 
   [Constant.CONST_GET_ALL]: (state, payload) => {         // 게시글 전체 가져오기
+    console.log("lll~~~ Mutations 01 : ");
     state.boardlist = payload.boardlist;
   }
 

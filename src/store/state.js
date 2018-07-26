@@ -1,6 +1,8 @@
 import Constant from '../constant';
 import CONF from '../Config';
 
+console.log("lll~~~ state 01 : ");
+
 export default {
   currentView: null,
   mode: 'add',
@@ -8,10 +10,10 @@ export default {
   // contactlist: {
   //   pageno: 1, pagesize: CONF.PAGESIZE, totalcount: 0, contacts: [],
 
-  board: {no: 0, title: '', tel: '', address: '', photo: ''},
+  boar: {no: 0, title: '', tel: '', address: '', photo: ''},
   title: null,
   boardlist: {
-    pageno: 1, pagesize: CONF.PAGESIZE, totalcount: 51, board: []
+    pageno: 1, pagesize: CONF.PAGESIZE, totalcount: 0, board: []
   }
 }
 // totalcount => 원래 0이었음

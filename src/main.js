@@ -3,7 +3,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 // import router from './router'
-import store from './router/index'
+import store from './store/index'
 
 import axios from 'axios'
 
@@ -18,7 +18,8 @@ import ContactForm from './components/contacts/ContactForm';
 import UpdatePhoto from './components/contacts/UpdatePhoto';
 
 Vue.use(VueRouter);
-Vue.prototype.$axios = axios;
+// Vue.prototype.$axios = axios;
+// Vue.prototype.$store = store;
 Vue.config.productionTip = false
 
 const router = new VueRouter({
@@ -26,8 +27,9 @@ const router = new VueRouter({
   routes: [
     {path: '/', name: 'HelloWorld', component: HelloWorld},
     {path: '/api/home', name: 'home', component: Home},
-    {path: '/about/api', name: 'about', component: About},
-    {path: '/contacts', name: 'contacts', component: ContactList, children: [
+    {path: '/about', name: 'about', component: About},
+    {
+      path: '/contacts', name: 'contacts', component: ContactList, children: [
       {path: 'add', name: 'addcontact', component: ContactForm},
       {path: 'update/:no', name: 'updatecontact', component: ContactForm, props: true},
       {path: 'photo/:no', name: 'updatephoto', component: UpdatePhoto, props: true}
@@ -38,9 +40,9 @@ const router = new VueRouter({
 
 /* eslint-disable no-new */
 new Vue({
-  el: '#app',
   store,
   router,
-  components: {App},
-  template: '<App/>'
+  el: '#app',
+  template: '<App/>',
+  components: {App}
 })

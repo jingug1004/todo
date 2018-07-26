@@ -20,7 +20,7 @@ export default {
   // GET_ALL: BASE_URL + "/getall"
 
   // 전체 가져오기
-  GET_ALL: BASE_URL + "/api/getall",
+  GET_ALL: BASE_URL + "/getall",
 
   // 1개 등록하기
   POST_ONE: BASE_URL + "/api/postone",

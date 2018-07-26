@@ -10,7 +10,7 @@
     <!--<TodoList v-bind:propsdata="todoItems" @removeTodo="removeTodo"></TodoList>-->
     <TodoList></TodoList>
     <TodoFooter v-on:removeAll="clearAll"></TodoFooter>
-    <loading v-show="isloading"></loading>
+    <!--<loading v-show="isloading"></loading>-->
   </div>
 </template>
 <script>

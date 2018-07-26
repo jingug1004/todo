@@ -1,24 +1,24 @@
 <template>
   <section>
     <transition-group name="list" tag="ul">
-      <li v-for="(board, index) in boardlist.todoItems" :key="todoItem" class="shadow">
+      <li v-for="boar in boardlist.board" :key="boar" class="shadow">
         <i class="checkBtn fa fa-check" aria-hidden="true"></i>
-        {{board.title}}
+        {{boar.title}}
         <span class="removeBtn" type="button" @click="removeTodo(todoItem, index)">
           <i class="fa fa-trash-o" aria-hidden="true"></i>
         </span>
       </li>
     </transition-group>
     <!--<paginate ref="pagebuttons"-->
-              <!--:page-count="totalpage"-->
-              <!--:page-range="4"-->
-              <!--:margin-pages="1"-->
-              <!--:click-handler="pageChanged"-->
-              <!--:prev-text="'.'"-->
-              <!--:next-text="'.'"-->
-              <!--:container-class="'pagination'"-->
-              <!--:page-class="'page-item'"-->
-              <!--class="pagina">-->
+    <!--:page-count="totalpage"-->
+    <!--:page-range="4"-->
+    <!--:margin-pages="1"-->
+    <!--:click-handler="pageChanged"-->
+    <!--:prev-text="'.'"-->
+    <!--:next-text="'.'"-->
+    <!--:container-class="'pagination'"-->
+    <!--:page-class="'page-item'"-->
+    <!--class="pagina">-->
     <!--</paginate>-->
   </section>
 </template>
@@ -29,37 +29,42 @@
   import Paginate from 'vuejs-paginate';
   import _ from 'lodash';
   import Velocity from 'velocity-animate';
+  //  import {mapActions} from 'vuex'
+
+  console.log("lll~~~ ToDoList 01 : ");
 
   export default {
-    name: 'toDoList',
+    name: 'boardlist',
     components: {Paginate},
-    props: ['propsdata'],
-    computed:
-      _.extend(
-        {
-          totalpage: function () {
-            var totalcount = this.boardlist.totalcount;
-            var pagesize = this.boardlist.pagesize;
-            return Math.floor((totalcount - 1) / pagesize) + 1;
-          }
-        },
-        mapState(['boardlist'])
-      ),
-    mounted:
-      function () {
-        var page = 1;
-        if (this.$route.query && this.$route.query.page) {
-          page = parseInt(this.$route.query.page);
+//    props: ['propsdata'],
+    computed: _.extend(
+      {
+        totalpage: function () {
+          var totalcount = this.boardlist.totalcount;
+          var pagesize = this.boardlist.pagesize;
+          return Math.floor((totalcount - 1) / pagesize) + 1;
         }
-        this.$store.dispatch(Constant.GET_ALL, {pageno: page});
-        this.$refs.pagebuttons.selected = page - 1;
       },
+      mapState(['boardlist'])
+    ),
+//    mounted: function () {
+    created: function () {
+
+      var page = 1;
+      if (this.$route.query && this.$route.query.page) {
+        page = parseInt(this.$route.query.page);
+      }
+      this.$store.dispatch(Constant.CONST_GET_ALL, {pageno: page});
+      this.$refs.pagebuttons.selected = page - 1;
+      console.log("lll~~~ mounted 00 : ");
+    },
     watch: {
       '$route': function (to, from) {
         if (to.query.page && to.query.page != this.boardlist.pageno) {
           var page = to.query.page;
-          this.$store.dispatch(Constant.GET_ALL, {pageno: page});
+          this.$store.dispatch(Constant.CONST_GET_ALL, {pageno: page});
           this.$refs.pagebuttons.selected = page - 1;
+          console.log("lll~~~ watch : ");
         }
       }
     },
@@ -70,6 +75,8 @@
       }
     }
   };
+
+  console.log("lll~~~ ToDoList 02 : ");
 </script>
 
 <style>

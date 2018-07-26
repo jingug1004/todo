@@ -1,6 +1,7 @@
 import contactAPI from '../api/ContactsAPI';
 import Constant from '../constant';
-import store from "../router/index";
+
+console.log("lll~~~ actions 00 : ");
 
 export default {
   [Constant.ADD_CONTACT_FORM]: (store) => { //입력폼 나타내기 02/09      01/09
@@ -115,8 +116,10 @@ export default {
       pageno = payload.pageno;
     }
     var pagesize = store.state.boardlist.pagesize;
+    console.log("lll~~~ actions 01 : ");
     contactAPI.constGetAll(pageno, pagesize)
       .then((response) => {
+        console.log("lll~~~ actions 02 : ");
         store.commit(Constant.CONST_GET_ALL, {boardlist: response.data})
       });
   }
