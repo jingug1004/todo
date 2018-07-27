@@ -8,6 +8,12 @@ module.exports = {
   dev: {
     // env: require('./dev.env'),
 
+    env: require('./dev.env'),
+    // port: 8080,
+    autoOpenBrowser: false,
+    // assetsSubDirectory: 'static',
+    // assetsPublicPath: '/',
+
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
@@ -25,7 +31,7 @@ module.exports = {
     // host: 'localhost', // can be overwritten by process.env.HOST
     host: '0.0.0.0' || 'localhost', // can be overwritten by process.env.HOST
     port: 8070, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
-    autoOpenBrowser: false,
+    // autoOpenBrowser: false,
     errorOverlay: true,
     notifyOnErrors: true,
     poll: false, // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-

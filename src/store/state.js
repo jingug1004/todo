@@ -10,7 +10,7 @@ export default {
   // contactlist: {
   //   pageno: 1, pagesize: CONF.PAGESIZE, totalcount: 0, contacts: [],
 
-  boar: {no: 0, title: '', tel: '', address: '', photo: ''},
+  boar: {no: 0, title: '', tel: '', address: '', photo: '', firstaddr: '', secaddr: ''},
   title: null,
   boardlist: {
     pageno: 1, pagesize: CONF.PAGESIZE, totalcount: 0, board: []
