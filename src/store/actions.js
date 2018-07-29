@@ -128,6 +128,7 @@ export default {
 
   /* GET 입력폼 가져오기 */
   [Constant.CONST_GET_POST_ONE_FORM]: (store) => {
+    var searchname = store.state.boardlist.searchname;
     console.log("lll~~~ actions.js store.commit(Constant.CONST_GET_POST_ONE_FORM) 03 : ");
     store.commit(Constant.CONST_GET_POST_ONE_FORM);
   },

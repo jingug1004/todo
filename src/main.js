@@ -14,7 +14,7 @@ import HelloWorld from '@/components/HelloWorld'
 import Home from './components/contacts/Home';
 import About from './components/contacts/About';
 import ContactList from './components/contacts/ContactList';
-import ContactForm from './components/about/ContactForm';
+import TodoInputForm from './components/about/TodoInputForm';
 import UpdatePhoto from './components/contacts/UpdatePhoto';
 
 Vue.use(VueRouter);
@@ -29,12 +29,12 @@ const router = new VueRouter({
     {path: '/api/home', name: 'home', component: Home},
     {
       path: '/about', name: 'about', component: About, children: [
-      {path: 'add', name: 'addcontact', component: ContactForm}]
+      {path: 'add', name: 'addproject', component: TodoInputForm}]
     },
     {
       path: '/contacts', name: 'contacts', component: ContactList, children: [
       // {path: 'add', name: 'addcontact1', component: ContactForm},
-      {path: 'update/:no', name: 'updatecontact', component: ContactForm, props: true},
+      // {path: 'update/:no', name: 'updatecontact', component: ContactForm, props: true},
       {path: 'photo/:no', name: 'updatephoto', component: UpdatePhoto, props: true}
     ]
     },

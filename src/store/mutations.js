@@ -46,7 +46,8 @@ export default {
   [Constant.CONST_GET_POST_ONE_FORM]: (state) => {
     state.boar = {title: '', firstaddr: '', secaddr: ''};
     state.mode = "add";
-    state.currentView = "contactForm";
+    state.currentView = "todoInputForm";
+    // state.searchname = "삼성1";
   },
 
   // GET 수정, 입력 폼에서 취소

@@ -49,7 +49,7 @@
           var value = this.newTodoItem && this.newTodoItem.trim();
 //          this.$emit('addTodo', value);
 //          alert("여기!");
-          this.$router.push({name: 'addcontact', paramas: {searchname: value}});
+          this.$router.push({name: 'addproject', paramas: {searchname: value}});
           this.clearInput();
         } else {
           this.showModal = !this.showModal;

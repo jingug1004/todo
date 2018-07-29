@@ -233,7 +233,7 @@
   .pagination > .active > span:hover,
   .pagination > .active > a:focus,
   .pagination > .active > span:focus {
-    z-index: 2;
+    /*z-index: 2;*/
     color: #ffffff;
     background-color: #6478FB;
     border-color: #8763FB;

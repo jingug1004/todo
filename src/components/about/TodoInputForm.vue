@@ -18,8 +18,7 @@
       </div>
       <div class="form-group">
         <label>프로젝트 이름</label>
-        <input type="text" name="address" class="long" v-model="contact.address"
-               placeholder="주소를 입력하세요"/>
+        <input type="text" name="address" class="long" v-model="boardlist.searchname"/>
       </div>
       <div class="form-group">
         <div>&nbsp;</div>
@@ -62,7 +61,7 @@
             return '연락처 변경';
         }
       },
-      mapState(['contact', 'contactlist'])
+      mapState(['contact', 'contactlist', 'boardlist'])
     ),
     mounted: function () {
 //      this.$refs.name.focus();
