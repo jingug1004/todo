@@ -6,7 +6,8 @@
         <div class="panel-body">About 화면입니다</div>
       </div>
     </div>
-    <TodoInput v-on:addTodo="addTodo"></TodoInput>
+    <!--<TodoInput v-on:addTodo="addTodo"></TodoInput>-->
+    <TodoInput></TodoInput>
     <!--<TodoList v-bind:propsdata="todoItems" @removeTodo="removeTodo"></TodoList>-->
     <TodoList></TodoList>
     <TodoFooter v-on:removeAll="clearAll"></TodoFooter>

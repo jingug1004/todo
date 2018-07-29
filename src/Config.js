@@ -1,7 +1,9 @@
 var BASE_URL = "/api";
 
+console.log("lll~~~ config.js Start 00 : ");
+
 export default {
-  PAGESIZE: 10,
+  PAGESIZE: 5,
 
   //전체 연락처 데이터 요청(페이징 포함)
   FETCH: BASE_URL + "/contacts_long",
@@ -23,7 +25,7 @@ export default {
   GET_ALL: BASE_URL + "/getall",
 
   // 1개 등록하기
-  POST_ONE: BASE_URL + "/api/postone",
+  POST_ONE: BASE_URL + "/postone",
 
   // 1개 삭제하기 -> Update문으로!
   DELETE_ONE: BASE_URL + "/api/deleteone",

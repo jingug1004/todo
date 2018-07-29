@@ -1,7 +1,7 @@
 import Constant from '../constant';
 import CONF from '../Config';
 
-console.log("lll~~~ state 01 : ");
+console.log("lll~~~ state.jss start 00 : ");
 
 export default {
   currentView: null,
@@ -10,10 +10,10 @@ export default {
   // contactlist: {
   //   pageno: 1, pagesize: CONF.PAGESIZE, totalcount: 0, contacts: [],
 
-  boar: {no: 0, title: '', tel: '', address: '', photo: '', firstaddr: '', secaddr: ''},
+  boar: {bno: 0, id: '', title: '', tel: '', address: '', photo: '', firstaddr: '', secaddr: ''},
   title: null,
   boardlist: {
-    pageno: 1, pagesize: CONF.PAGESIZE, totalcount: 0, board: []
+    pageno: 1, pagesize: CONF.PAGESIZE, totalcount: 0, board: [], searchname: ''
   }
 }
 // totalcount => 원래 0이었음

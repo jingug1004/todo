@@ -1,3 +1,5 @@
+console.log("lll~~~ constant.js Start 00 : ");
+
 export default {
   /*
   FETCH_CONTACTS: "fetchContacts",                 //연락처 조회 01/09
@@ -16,8 +18,16 @@ export default {
   INITIALIZE_CONTACT_ONE: "initializeContactOne"
   */
 
+  /* GET */
   CONST_GET_ALL: "constGetAll",                                // 전체 가져오기
+  CONST_GET_POST_ONE_FORM: "constGetPostOneForm",              // 1개 등록할 폼 띄우기
+
+  CONST_GET_CANCEL_FORM: "constGetCancelForm",                 // 입력, 수정폼 닫기 06/09
+
+
+  /* POST */
   CONST_POST_ONE: "constPostOne",                              // 1개 등록하기
+
   CONST_DELETE_ONE: "constDeleteOne",                          // 1개 삭제하기 -> Update문으로!
   CONST_DELETE_ALL: "constDeleteAll"                           // 전체 삭제하기 -> Update문으로!
 

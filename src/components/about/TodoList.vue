@@ -7,13 +7,10 @@
             <i class="checkBtn fa fa-check" aria-hidden="true"></i>
           </div>
           <div class="center-box">
-            <!--<div class="updiv"></div>-->
-            <!--<div class="downdiv"><p>[{{boar.firstaddr}} {{boar.secaddr}}] <br> {{boar.title}}</p></div>-->
-            <!--<div class="updiv"><p>[{{boar.firstaddr}} {{boar.secaddr}}]</p></div>-->
-              <!--<div class="downdiv"><p>{{boar.title}}</p></div>-->
-            <!--<p class="updiv">[{{boar.firstaddr}} {{boar.secaddr}}]</p>-->
-            <!--<p class="downdiv">{{boar.title}}</p>-->
-            <p>[{{boar.firstaddr}} {{boar.secaddr}}] {{boar.title}}</p>
+            <div class="downdiv">
+              <span class="downdiv-in">[{{boar.firstaddr}} {{boar.secaddr}}]</span>
+              {{boar.title}}
+            </div>
           </div>
           <div class="right-box">
         <span class="removeBtn" type="button" @click="removeTodo(todoItem, index)">
@@ -66,7 +63,9 @@
       if (this.$route.query && this.$route.query.page) {
         page = parseInt(this.$route.query.page);
       }
-      this.$store.dispatch(Constant.CONST_GET_ALL, {pageno: page});
+
+      var searchname = "";
+      this.$store.dispatch(Constant.CONST_GET_ALL, {pageno: page, searchname: searchname});
       this.$refs.pagebuttons.selected = page - 1;
       console.log("lll~~~ mounted 00 : ");
     },
@@ -74,7 +73,11 @@
       '$route': function (to, from) {
         if (to.query.page && to.query.page != this.boardlist.pageno) {
           var page = to.query.page;
-          this.$store.dispatch(Constant.CONST_GET_ALL, {pageno: page});
+          var searchname = "";
+          if (to.query.searchname || this.boardlist.searchname) {
+            searchname = this.boardlist.searchname;
+          }
+          this.$store.dispatch(Constant.CONST_GET_ALL, {pageno: page, searchname: searchname});
           this.$refs.pagebuttons.selected = page - 1;
           console.log("lll~~~ watch : ");
         }
@@ -88,7 +91,6 @@
       pageChanged: function (page) {
         this.$router.push({name: 'about', query: {page: page}})
         /*name: 'board' 로 하면 없는 페이지 ?/page=2 나옴*/
-
       }
     }
   };
@@ -192,7 +194,8 @@
   .pagination > li > span {
     position: relative;
     float: left;
-    padding: 6px 12px;
+    /*padding: 6px 12px;*/
+    padding: 4.5px 9px;
     line-height: 1.42857143;
     text-decoration: none;
     color: #337ab7;
@@ -337,7 +340,7 @@
   .left-box {
     /*background: red;*/
     float: left;
-    width: 10%;
+    width: 7%;
     /*flex: 1;*/
   }
 
@@ -347,7 +350,7 @@
     text-align: right;
     margin-right: right;
     float: right;
-    width: 10%;
+    width: 13%;
   }
 
   .containtodo {
@@ -360,7 +363,7 @@
     /*background: orange;*/
     /*flex: 10px;*/
     text-align: left;
-    width: 80%;
+    width: 90%;
     /*height: 100%;*/
   }
 
@@ -382,7 +385,7 @@
 
   .center-box .downdiv {
     /*padding: 5% 0 0 0;*/
-    height: 50%;
+    /*height: 50%;*/
     /*width: 100%;*/
     /*background-color: green;*/
     /*height: 50%;*/
@@ -392,5 +395,12 @@
     white-space: nowrap;
     /* 줄 넘침 end */
   }
+
+  .center-box .downdiv .downdiv-in {
+    font-size: 7px;
+    height: 0em;
+    position: static;
+  }
+
 
 </style>

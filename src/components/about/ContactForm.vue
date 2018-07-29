@@ -1,31 +1,31 @@
 <template>
   <div class="modal">
-    <div class="form" @keyup.esc="cancelEvent">
+    <div class="form" @keyup.esc="cancelEvent()">
       <h3 class="heading">:: {{headingText}}</h3>
       <div v-if="mode=='update'" class="form-group">
         <label>일련번호</label>
         <input type="text" name="no" class="long" disabled v-model="contact.no"/>
       </div>
       <div class="form-group">
-        <label>이름</label>
+        <label>지역1</label>
         <input type="text" name="name" class="long" v-model="contact.name"
-               ref="name" placeholder="이름을 입력하세요"/>
+               ref="name" placeholder="지역을 입력하세요"/>
       </div>
       <div class="form-group">
-        <label>전화번호</label>
+        <label>지역2</label>
         <input type="text" name="tel" class="long" v-model="contact.tel"
                placeholder="전화번호를 입력하세요"/>
       </div>
       <div class="form-group">
-        <label>주 소</label>
+        <label>프로젝트 이름</label>
         <input type="text" name="address" class="long" v-model="contact.address"
                placeholder="주소를 입력하세요"/>
       </div>
       <div class="form-group">
         <div>&nbsp;</div>
-        <input type="button" class="btn btn-primary"
+        <input type="button" class="appButton"
                v-bind:value="btnText" @click="submitEvent()"/>
-        <input type="button" class="btn btn-primary"
+        <input type="button" class="appButton"
                value="취 소" @click="cancelEvent()"/>
       </div>
     </div>
@@ -37,12 +37,17 @@
   import {mapState} from 'vuex';
   import _ from 'lodash';
 
+  import Modal from '../common/Modal.vue';
+  import Paginate from 'vuejs-paginate';
+  import Velocity from 'velocity-animate';
+  import store from "../../store/index";
+
   export default {
     name: "contactForm",
     data: function () {
       return {mode: "add"}
     },
-    props: ['no'],
+//    props: ['no'],
     computed: _.extend({
         btnText: function () {
           if (this.mode != 'update')
@@ -52,7 +57,7 @@
         },
         headingText: function () {
           if (this.mode != 'update')
-            return '새로운 연락처 추가';
+            return '새로운 프로젝트 추가';
           else
             return '연락처 변경';
         }
@@ -60,15 +65,15 @@
       mapState(['contact', 'contactlist'])
     ),
     mounted: function () {
-      this.$refs.name.focus();
-      var cr = this.$router.currentRoute;
-      if (cr.fullPath.indexOf('/add') > -1) {
-        this.mode = "add";
-        this.$store.dispatch(Constant.INITIALIZE_CONTACT_ONE);
-      } else if (cr.fullPath.indexOf('/update') > -1) {
-        this.mode = "update";
-        this.$store.dispatch(Constant.FETCH_CONTACT_ONE, {no: this.no});
-      }
+//      this.$refs.name.focus();
+//      var cr = this.$router.currentRoute;
+//      if (cr.fullPath.indexOf('/add') > -1) {
+//        this.mode = "add";
+//        this.$store.dispatch(Constant.INITIALIZE_CONTACT_ONE);
+//      } else if (cr.fullPath.indexOf('/update') > -1) {
+//        this.mode = "update";
+//        this.$store.dispatch(Constant.FETCH_CONTACT_ONE, {no: this.no});
+//      }
     },
     methods: {
       submitEvent: function () {
@@ -81,7 +86,13 @@
         }
       },
       cancelEvent: function () {
-        this.$router.push({name: 'contacts', query: {page: this.contactlist.pageno}});
+//        alert("!!!~~~ pageno : " + this.boardlist.pageno);
+//        alert("!!!~~~ pageno : ");
+//        pageno = this.contactlist.pageno;
+//        this.$router.push({name: 'about', query: {page: this.boardlist.pageno}});
+//        var pageno = 1;
+//        this.$router.push({name: 'about', query: {page: pageno}});
+        this.$router.push({name: 'about'});
       }
     }
   }
@@ -124,6 +135,7 @@
     padding: 0px;
     display: block;
     font-weight: bold;
+    font: 15px "verdana";
   }
 
   .form input, textarea, select {
@@ -150,7 +162,7 @@
   }
 
   .form .heading {
-    background: #33A17F;
+    background: linear-gradient(#6478FB, #8763FB);
     font-weight: 300;
     text-align: left;
     padding: 20px;
@@ -161,5 +173,50 @@
     /*max-width: 400px;*/
     min-width: auto;
     max-width: auto;
+    font: 25px "verdana";
+  }
+
+  .appButton {
+    background: linear-gradient(#6478FB, #8763FB);
+    color: #fff;
+    border: none;
+    position: relative;
+    height: 40px;
+    font-size: 1.6em;
+    padding: 0 0.5rem;
+    cursor: pointer;
+    transition: 800ms ease all;
+    outline: none;
+    font: 15px "verdana";
+    width: 60px;
+  }
+
+
+  .appButton:hover {
+    background: #fff;
+    color: #6478FB;
+  }
+
+  .appButton:before, .appButton:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 2px;
+    width: 0;
+    background: #8763FB;
+    transition: 400ms ease all;
+  }
+
+  .appButton:after {
+    right: inherit;
+    top: inherit;
+    left: 0;
+    bottom: 0;
+  }
+
+  .appButton:hover:before, .appButton:hover:after {
+    width: 100%;
+    transition: 800ms ease all;
   }
 </style>
