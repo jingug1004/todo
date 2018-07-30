@@ -14,6 +14,11 @@ export default {
   title: null,
   boardlist: {
     pageno: 1, pagesize: CONF.PAGESIZE, totalcount: 0, board: [], searchname: ''
+  },
+  firstaddrlist: null,
+  addr: {firstaddr: '', secaddr: ''},
+  addrlist: {
+    addre: []
   }
 }
 // totalcount => 원래 0이었음

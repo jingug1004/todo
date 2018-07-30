@@ -35,10 +35,9 @@ export default {
     state.currentView = "updatePhoto";
   },
 
+  /* GET */
   // GET 게시글 전체 가져오기
   [Constant.CONST_GET_ALL]: (state, payload) => {         // 게시글 전체 가져오기
-    console.log("lll~~~ mutations.js CONST_GET_ALL state 01 : " + state);
-    console.log("lll~~~ mutations.js CONST_GET_ALL payload 01 : " + payload);
     state.boardlist = payload.boardlist;
   },
 
@@ -53,5 +52,16 @@ export default {
   // GET 수정, 입력 폼에서 취소
   [Constant.CONST_GET_CANCEL_FORM]: (state) => {
     state.currentView = null;
+  },
+
+  // GET select 주소 1 리스트 가져오기
+  [Constant.CONST_GET_FIRSTADDR_SELECTED]: (state, payload) => {
+    state.addrlist = payload.addrlist;
+    console.log("lll~~~ mutations.js CONST_GET_FIRSTADDR_SELECTED 03 : " + state);
+    console.log("lll~~~ mutations.js CONST_GET_FIRSTADDR_SELECTED 04 : " + payload);
+    // state.firstaddr = "firstaddr";
+
   }
+
+
 }

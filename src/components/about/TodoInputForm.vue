@@ -8,8 +8,25 @@
       </div>
       <div class="form-group">
         <label>지역1</label>
-        <input type="text" name="name" class="long" v-model="contact.name"
-               ref="name" placeholder="지역을 입력하세요"/>
+        <select  @click="region1Event()" class="long">
+          <option disabled="disabled" selected>지역을 선택하세요</option>
+          <option v-for="addr in addrlist.addre"
+                  :value="addr.firstaddr"
+          >
+            {{ addr.firstaddr }}
+          <!--<option>A          </option>-->
+          <!--<option>B          </option>-->
+          </option>
+        </select>
+        <!--<select class="long" v-on:click="region1Event">-->
+        <!--<option v-for="addr in addrlist.addre"-->
+        <!--:key="addr"-->
+        <!--v-bind:value="addre.firstaddr"-->
+        <!--&gt;-->
+        <!--{{ addr.firstaddr }}-->
+        <!--</option>-->
+        <!--</select>-->
+        <!--<span>선택함: {{ selected1 }}</span>-->
       </div>
       <div class="form-group">
         <label>지역2</label>
@@ -61,7 +78,7 @@
             return '연락처 변경';
         }
       },
-      mapState(['contact', 'contactlist', 'boardlist'])
+      mapState(['contact', 'contactlist', 'boar', 'boardlist', 'addr', 'addrlist'])
     ),
     mounted: function () {
 //      this.$refs.name.focus();
@@ -73,6 +90,7 @@
 //        this.mode = "update";
 //        this.$store.dispatch(Constant.FETCH_CONTACT_ONE, {no: this.no});
 //      }
+      this.$store.dispatch(Constant.CONST_GET_FIRSTADDR_SELECTED);
     },
     methods: {
       submitEvent: function () {
@@ -92,6 +110,11 @@
 //        var pageno = 1;
 //        this.$router.push({name: 'about', query: {page: pageno}});
         this.$router.push({name: 'about'});
+      },
+      region1Event: function () {
+//        alert("여기!");
+//        this.$store.dispatch();
+
       }
     }
   }
@@ -189,7 +212,6 @@
     font: 15px "verdana";
     width: 60px;
   }
-
 
   .appButton:hover {
     background: #fff;

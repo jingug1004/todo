@@ -21,15 +21,30 @@ export default {
   //
   // GET_ALL: BASE_URL + "/getall"
 
+  /* GET */
   // 전체 가져오기
   GET_ALL: BASE_URL + "/getall",
 
+  // firstaddr v-for 실렉트문 가져오기
+  GET_FIRSTADDR_SELECTED:  BASE_URL + "/getfirstaddr",
+
+
+
+
+  /* POST */
   // 1개 등록하기
   POST_ONE: BASE_URL + "/postone",
+
+
+
+
+
 
   // 1개 삭제하기 -> Update문으로!
   DELETE_ONE: BASE_URL + "/api/deleteone",
 
   // 전체 삭제하기 -> Update문으로!
   DELETE_ALL: BASE_URL + "/api/deleteall"
+
+
 };

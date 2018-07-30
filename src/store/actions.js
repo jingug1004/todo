@@ -32,7 +32,8 @@ export default {
     // store.dispatch(Constant.CHANGE_ISLOADING, {isloading: true});
     var currentPageNo = store.state.contactlist.pageno;
     contactAPI.updateContact(store.state.contact)
-      .then((response) => {````
+      .then((response) => {
+        ````
         if (response.data.status == "success") {
           store.dispatch(Constant.CANCEL_FORM);
           store.dispatch(Constant.FETCH_CONTACTS, {pageno: currentPageNo});
@@ -108,6 +109,7 @@ export default {
 
   /**/
 
+  /* GET */
   /* GET 전체 내용 가져오기 */
   [Constant.CONST_GET_ALL]: (store, payload) => {     // 게시글 전체 가져오기
     var pageno;
@@ -133,6 +135,16 @@ export default {
     store.commit(Constant.CONST_GET_POST_ONE_FORM);
   },
 
+  /* GET 주소1 실렉트 박스 가져오기 */
+  [Constant.CONST_GET_FIRSTADDR_SELECTED]: (store, payload) => {
+    contactAPI.constGetFirstaddrSelected()
+      .then((response) => {
+        store.commit(Constant.CONST_GET_FIRSTADDR_SELECTED, {addrlist: response.data});
+      });
+  },
+
+
+  /* POST */
   /* POST 1개 입력하기 */
   [Constant.POST_ONE]: (store) => {
     contactAPI.constPostOne(store.state.boar)
