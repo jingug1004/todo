@@ -8,30 +8,21 @@
       </div>
       <div class="form-group">
         <label>지역1</label>
-        <select  @click="region1Event()" class="long">
+        <select @change="region1Event" v-model="seldata01" class="long">
           <option disabled="disabled" selected>지역을 선택하세요</option>
-          <option v-for="addr in addrlist.addre"
-                  :value="addr.firstaddr"
-          >
-            {{ addr.firstaddr }}
-          <!--<option>A          </option>-->
-          <!--<option>B          </option>-->
+          <option v-for="addr in addrlist.addre" :value="addr.menunum" :key="addr.firstaddr">
+            {{addr.firstaddr}}
           </option>
         </select>
-        <!--<select class="long" v-on:click="region1Event">-->
-        <!--<option v-for="addr in addrlist.addre"-->
-        <!--:key="addr"-->
-        <!--v-bind:value="addre.firstaddr"-->
-        <!--&gt;-->
-        <!--{{ addr.firstaddr }}-->
-        <!--</option>-->
-        <!--</select>-->
-        <!--<span>선택함: {{ selected1 }}</span>-->
       </div>
       <div class="form-group">
         <label>지역2</label>
-        <input type="text" name="tel" class="long" v-model="contact.tel"
-               placeholder="전화번호를 입력하세요"/>
+        <select @change="region2Event" v-model="seldata02" class="long">
+          <option disabled="disabled" selected>지역을 선택하세요</option>
+          <option v-for="addr02 in addrlist02.addre02" :value="addr02.menunum02" :key="addr02.secaddr02">
+            {{addr02.secaddr02}}
+          </option>
+        </select>
       </div>
       <div class="form-group">
         <label>프로젝트 이름</label>
@@ -61,7 +52,11 @@
   export default {
     name: "contactForm",
     data: function () {
-      return {mode: "add"}
+      return {
+        mode: "add",
+        seldata01: "",
+        seldata02: ""
+      }
     },
 //    props: ['no'],
     computed: _.extend({
@@ -76,9 +71,9 @@
             return '새로운 프로젝트 추가';
           else
             return '연락처 변경';
-        }
+        },
       },
-      mapState(['contact', 'contactlist', 'boar', 'boardlist', 'addr', 'addrlist'])
+      mapState(['contact', 'contactlist', 'boar', 'boardlist', 'addr', 'addrlist', 'addr02', 'addrlist02'])
     ),
     mounted: function () {
 //      this.$refs.name.focus();
@@ -111,12 +106,56 @@
 //        this.$router.push({name: 'about', query: {page: pageno}});
         this.$router.push({name: 'about'});
       },
-      region1Event: function () {
-//        alert("여기!");
-//        this.$store.dispatch();
+      click1Event: function () {
+//        alert("lll~~~ 클릭 : ");
+      },
 
+      region1Event: function () {
+        var secaddrclue = this.seldata01;
+        alert("lll~~~ secaddrclue 01 : " + secaddrclue);
+//        if (secaddrclue !== null || secaddrclue === "") {
+//          alert("lll~~~ secaddrclue : " + secaddrclue);
+//        }
+//        this.$store.dispatch(Constant.CONST_GET_SECADDR_SELECTED, {firstaddrval: parseInt(secaddrclue)});
+      },
+
+      click2Event: function () {
+        var secaddrclue = this.seldata01;
+//        alert("lll~~~ 클릭 secaddrclue  : " + secaddrclue);
+//        this.$store.dispatch(Constant.CONST_GET_SECADDR_SELECTED, {firstaddrval: parseInt(secaddrclue)});
+      },
+      region2Event: function () {
+        var secaddrclue = this.seldata01;
+        alert("lll~~~ secaddrclue 02 : " + secaddrclue);
+//        alert("여기! 02" + this.addr.menunum);
+//        this.$store.dispatch();
+//        let secaddrclue = this.seldata02;
+//        if (secaddrclue !== null || secaddrclue === "") {
+//          alert("여기! 01" + secaddrclue);
+//        this.$store.dispatch(Constant.CONST_GET_SECADDR_SELECTED, {firstaddrval: secaddrclue});
+//        }
+        alert("마지막");
       }
+    },
+    watch: {
+//      '$route': function (to, from) {
+//        if (this.addrlist.addre.menunum) {
+//          alert("변동");
+//        }
+//
+//      }
+      seldata01: function (val) {
+        if (val !== "") {
+          this.$store.dispatch(Constant.CONST_GET_SECADDR_SELECTED, {firstaddrval: parseInt(val)});
+//          this.fetchContacts();
+        } else {
+//          this.contactlist = [];
+        }
+      }
+
+
     }
+
   }
 </script>
 

@@ -22,22 +22,16 @@ export default {
   // GET_ALL: BASE_URL + "/getall"
 
   /* GET */
-  // 전체 가져오기
-  GET_ALL: BASE_URL + "/getall",
+  GET_ALL: BASE_URL + "/getall", // 전체 가져오기
 
-  // firstaddr v-for 실렉트문 가져오기
-  GET_FIRSTADDR_SELECTED:  BASE_URL + "/getfirstaddr",
+  GET_FIRSTADDR_SELECTED: BASE_URL + "/getfirstaddr", // firstaddr v-for 1st 실렉트문 가져오기
 
-
+  GET_SECADDR_SELECTED: BASE_URL + "/getsecaddr", // secaddr v-for 2nd 실렉트문 가져오기
 
 
   /* POST */
   // 1개 등록하기
   POST_ONE: BASE_URL + "/postone",
-
-
-
-
 
 
   // 1개 삭제하기 -> Update문으로!

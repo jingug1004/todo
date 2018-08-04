@@ -54,13 +54,18 @@ export default {
     state.currentView = null;
   },
 
-  // GET select 주소 1 리스트 가져오기
-  [Constant.CONST_GET_FIRSTADDR_SELECTED]: (state, payload) => {
+  [Constant.CONST_GET_FIRSTADDR_SELECTED]: (state, payload) => { // GET select 주소 1 리스트 가져오기
     state.addrlist = payload.addrlist;
+    // console.log("lll~~~ mutations.js CONST_GET_FIRSTADDR_SELECTED 03 : " + state);
+    // console.log("lll~~~ mutations.js CONST_GET_FIRSTADDR_SELECTED 04 : " + payload);
+    // state.firstaddr = "firstaddr";
+  },
+
+  [Constant.CONST_GET_SECADDR_SELECTED]: (state, payload) => { // GET select 주소 2 리스트 가져오기
+    state.addrlist02 = payload.addrlist02;
     console.log("lll~~~ mutations.js CONST_GET_FIRSTADDR_SELECTED 03 : " + state);
     console.log("lll~~~ mutations.js CONST_GET_FIRSTADDR_SELECTED 04 : " + payload);
     // state.firstaddr = "firstaddr";
-
   }
 
 

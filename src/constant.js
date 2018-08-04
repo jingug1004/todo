@@ -24,8 +24,8 @@ export default {
 
   CONST_GET_CANCEL_FORM: "constGetCancelForm",                 // 입력, 수정폼 닫기 06/09
 
-  CONST_GET_FIRSTADDR_SELECTED: "constGetFirstaddrSelected",   // firstaddr v-for 실렉트문 가져오기
-  CONST_GET_SECADDR_SELECTED: "constGetSecaddrSelected",       // secaddr v-for 실렉트문 가져오기
+  CONST_GET_FIRSTADDR_SELECTED: "constGetFirstaddrSelected",   // firstaddr v-for 1st 실렉트문 가져오기
+  CONST_GET_SECADDR_SELECTED: "constGetSecaddrSelected",       // secaddr v-for 2nd 실렉트문 가져오기
 
 
   /* POST */

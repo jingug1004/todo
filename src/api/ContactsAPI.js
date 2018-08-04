@@ -18,14 +18,17 @@ export default {
     });
   },
 
-
-  // firstaddr v-for 실렉트문 가져오기
-  constGetFirstaddrSelected: function () {
+  constGetFirstaddrSelected: function () { // firstaddr v-for 1st 실렉트문 가져오기
     return axios.get(CONF.GET_FIRSTADDR_SELECTED);
-
   },
 
-
+  constGetSecaddrSelected: function (firstaddrval) { // secaddr v-for 2nd 실렉트문 가져오기
+    return axios.get(CONF.GET_SECADDR_SELECTED, {
+      params: {
+        firstclue: firstaddrval
+      }
+    });
+  },
 
 
   /* POST */
@@ -33,8 +36,6 @@ export default {
   constPostOne: function (boar) {
     return axios.post(CONF.POST_ONE, boar);
   }
-
-
 
 
 }

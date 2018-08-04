@@ -74,7 +74,7 @@
 //          if (searchname !== "" || searchname === null) {
 //            page = 1;
 //          }
-          this.$store.commit('addWriteTodo', searchname);
+//          this.$store.commit('addWriteTodo', searchname);
           this.$store.dispatch(Constant.CONST_GET_ALL, {pageno: page, searchname: searchname});
 
         }, 1000);

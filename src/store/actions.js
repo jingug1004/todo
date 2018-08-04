@@ -135,11 +135,20 @@ export default {
     store.commit(Constant.CONST_GET_POST_ONE_FORM);
   },
 
-  /* GET 주소1 실렉트 박스 가져오기 */
-  [Constant.CONST_GET_FIRSTADDR_SELECTED]: (store, payload) => {
+
+  [Constant.CONST_GET_FIRSTADDR_SELECTED]: (store, payload) => {   /* GET 주소1 실렉트 박스 가져오기 */
     contactAPI.constGetFirstaddrSelected()
       .then((response) => {
         store.commit(Constant.CONST_GET_FIRSTADDR_SELECTED, {addrlist: response.data});
+      });
+  },
+
+
+  [Constant.CONST_GET_SECADDR_SELECTED]: (store, payload) => {   /* GET 주소2 실렉트 박스 가져오기 */
+    var firstclue = payload.firstaddrval;
+    contactAPI.constGetSecaddrSelected(firstclue)
+      .then((response) => {
+        store.commit(Constant.CONST_GET_SECADDR_SELECTED, {addrlist02: response.data});
       });
   },
 
