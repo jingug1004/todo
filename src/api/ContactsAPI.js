@@ -32,8 +32,8 @@ export default {
 
 
   /* POST */
-  // 1개 등록하기
-  constPostOne: function (boar) {
+  constPostOne: function (boar) {   // 1개 등록하기
+    console.log("lll~~~ boar : " + boar);
     return axios.post(CONF.POST_ONE, boar);
   }
 

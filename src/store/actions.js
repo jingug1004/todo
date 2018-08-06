@@ -33,7 +33,6 @@ export default {
     var currentPageNo = store.state.contactlist.pageno;
     contactAPI.updateContact(store.state.contact)
       .then((response) => {
-        ````
         if (response.data.status == "success") {
           store.dispatch(Constant.CANCEL_FORM);
           store.dispatch(Constant.FETCH_CONTACTS, {pageno: currentPageNo});
@@ -123,7 +122,7 @@ export default {
     console.log("lll~~~ actions.js + pageno + pagesize + searchname 01 : " + pageno + pagesize + searchname);
     contactAPI.constGetAll(pageno, pagesize, searchname)
       .then((response) => {
-        console.log("lll~~~ actions.js store.commit(Constant.CONST_GET_ALL, {boardlist: response.data}) 02 : ");
+        // console.log("lll~~~ actions.js store.commit(Constant.CONST_GET_ALL, {boardlist: response.data}) 02 : ");
         store.commit(Constant.CONST_GET_ALL, {boardlist: response.data})
       });
   },
@@ -155,15 +154,17 @@ export default {
 
   /* POST */
   /* POST 1개 입력하기 */
-  [Constant.POST_ONE]: (store) => {
+  [Constant.CONST_POST_ONE]: (store) => {
+    console.log("lll~~~ store : " + store);
+    console.log("lll~~~ store.state.boar : " + store.state.boar);
     contactAPI.constPostOne(store.state.boar)
       .then((response) => {
           if (response.data.status == "success") {
             store.dispatch(Constant.CONST_GET_CANCEL_FORM);
             console.log("lll~~~ actions.js contactAPI.constPostOne(store.state.boar) success 04 : ");
-            store.dispatch(Constant.CONST_GET_ALL, {pageno: 1});
+            store.dispatch(Constant.CONST_GET_ALL, {pageno: 1, searchname: ""});
           } else {
-            console.log("lll~~~ actions.js 연락처 추가 실패 : response.data); 05 : " + response.data);
+            console.log("lll~~~ actions.js 추가 실패 : response.data); 05 : " + response.data);
           }
         }
       )
@@ -173,5 +174,23 @@ export default {
   [Constant.CONST_GET_CANCEL_FORM]: (store, payload) => { //입력, 수정폼 닫기 06/09      08/09
     store.commit(Constant.CONST_GET_CANCEL_FORM);
   },
+
+  /* INITIALIZE firstaddr */
+  [Constant.INITIALIZE_CONTACT_ONE_FIRSTADDR]: (store, payload) => {
+    var firstaddrAction = payload.firstaddrComponent;
+    store.commit(Constant.INITIALIZE_CONTACT_ONE_FIRSTADDR, {firstaddrMutation: firstaddrAction});
+  },
+
+  /* INITIALIZE secaddr */
+  [Constant.INITIALIZE_CONTACT_ONE_SECADDR]: (store, payload) => {
+    var secaddrAction = payload.secaddrComponent;
+    store.commit(Constant.INITIALIZE_CONTACT_ONE_SECADDR, {secaddrMutation: secaddrAction});
+  },
+
+  /* INITIALIZE thirdprjname */
+  [Constant.INITIALIZE_CONTACT_ONE_THIRDPRJNAME]: (store, payload) => {
+    var thirdPrjNameAction = payload.thirdPrjNameComponent;
+    store.commit(Constant.INITIALIZE_CONTACT_ONE_THIRDPRJNAME, {thirdPrjNameMutation: thirdPrjNameAction});
+  }
 
 }

@@ -27,17 +27,14 @@ const router = new VueRouter({
   routes: [
     {path: '/', name: 'HelloWorld', component: HelloWorld},
     {path: '/api/home', name: 'home', component: Home},
-    {
-      path: '/about', name: 'about', component: About, children: [
-      {path: 'add', name: 'addproject', component: TodoInputForm}]
-    },
-    {
-      path: '/contacts', name: 'contacts', component: ContactList, children: [
+    {path: '/about', name: 'about', component: About, children: [
+      {path: 'add', name: 'addproject', component: TodoInputForm}
+      ]},
+    {path: '/contacts', name: 'contacts', component: ContactList, children: [
       // {path: 'add', name: 'addcontact1', component: ContactForm},
       // {path: 'update/:no', name: 'updatecontact', component: ContactForm, props: true},
       {path: 'photo/:no', name: 'updatephoto', component: UpdatePhoto, props: true}
-    ]
-    },
+    ]},
   ]
 })
 

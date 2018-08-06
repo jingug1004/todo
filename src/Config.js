@@ -30,8 +30,8 @@ export default {
 
 
   /* POST */
-  // 1개 등록하기
-  POST_ONE: BASE_URL + "/postone",
+  POST_ONE: BASE_URL + "/postone",                // 1개 등록하기
+
 
 
   // 1개 삭제하기 -> Update문으로!

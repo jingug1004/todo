@@ -31,6 +31,13 @@ export default {
   /* POST */
   CONST_POST_ONE: "constPostOne",                              // 1개 등록하기
 
+  /* INITIALIZE */
+  INITIALIZE_CONTACT_ONE_FIRSTADDR: "initializeContactOneFirstaddr",
+  INITIALIZE_CONTACT_ONE_SECADDR: "initializeContactOneSecaddr",
+  INITIALIZE_CONTACT_ONE_THIRDPRJNAME: "initializeContactOneThirdprjname",
+
+
+
   CONST_DELETE_ONE: "constDeleteOne",                          // 1개 삭제하기 -> Update문으로!
   CONST_DELETE_ALL: "constDeleteAll"                           // 전체 삭제하기 -> Update문으로!
 

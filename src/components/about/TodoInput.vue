@@ -135,3 +135,10 @@
 
 
 </style>
+
+<!--
+// ===== Process
+Constant.js(상수) -> Config.js -> API(axios) -> State -> Mutation -> Action -> main.js(children) -> component
+State -> Getter -> Mutation -> Action -> Module
+// ===== Process
+-->

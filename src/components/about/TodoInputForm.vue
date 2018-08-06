@@ -4,29 +4,32 @@
       <h3 class="heading">:: {{headingText}}</h3>
       <div v-if="mode=='update'" class="form-group">
         <label>일련번호</label>
-        <input type="text" name="no" class="long" disabled v-model="contact.no"/>
+        <!--<input type="text" name="no" class="long" disabled v-model="contact.no"/>-->
       </div>
       <div class="form-group">
         <label>지역1</label>
-        <select @change="region1Event" v-model="seldata01" class="long">
+        <select @change="region1Event" v-model="menunum" class="long">
           <option disabled="disabled" selected>지역을 선택하세요</option>
-          <option v-for="addr in addrlist.addre" :value="addr.menunum" :key="addr.firstaddr">
+          <option v-for="addr in addrlist.addre" name="firstaddr" :value="addr.menunum"
+                  :key="addr.firstaddr">
             {{addr.firstaddr}}
           </option>
         </select>
       </div>
       <div class="form-group">
         <label>지역2</label>
-        <select @change="region2Event" v-model="seldata02" class="long">
+        <select @change="region2Event" v-model="menunum02" class="long">
           <option disabled="disabled" selected>지역을 선택하세요</option>
-          <option v-for="addr02 in addrlist02.addre02" :value="addr02.menunum02" :key="addr02.secaddr02">
+          <option v-for="addr02 in addrlist02.addre02" name="secaddr" :value="addr02.menunum02"
+                  :key="addr02.secaddr02">
             {{addr02.secaddr02}}
           </option>
         </select>
       </div>
+
       <div class="form-group">
         <label>프로젝트 이름</label>
-        <input type="text" name="address" class="long" v-model="boardlist.searchname"/>
+        <input type="text" name="searchname" class="long" v-on:input="writePrj" v-bind:value="seldata03"/>
       </div>
       <div class="form-group">
         <div>&nbsp;</div>
@@ -54,8 +57,9 @@
     data: function () {
       return {
         mode: "add",
-        seldata01: "",
-        seldata02: ""
+        menunum: '',
+        menunum02: '',
+        seldata03: ''
       }
     },
 //    props: ['no'],
@@ -90,11 +94,12 @@
     methods: {
       submitEvent: function () {
         if (this.mode == "update") {
-          this.$store.dispatch(Constant.UPDATE_CONTACT);                                  //연락처 수정           05/09 PUT
-          this.$router.push({name: 'contacts', query: {page: this.contactlist.pageno}});
+//          this.$store.dispatch(Constant.UPDATE_CONTACT);                                  //연락처 수정           05/09 PUT
+//          this.$router.push({name: 'contacts', query: {page: this.contactlist.pageno}});
         } else {
-          this.$store.dispatch(Constant.ADD_CONTACT);                                     //연락처 추가           03/09 POST
-          this.$router.push({name: 'contacts', query: {page: 1}});
+          alert("lll~~~ 클릭_01 : ");
+          this.$store.dispatch(Constant.CONST_POST_ONE);                                     //연락처 추가           03/09 POST
+          this.$router.push({name: 'about', query: {page: 1}});
         }
       },
       cancelEvent: function () {
@@ -111,30 +116,44 @@
       },
 
       region1Event: function () {
-        var secaddrclue = this.seldata01;
-        alert("lll~~~ secaddrclue 01 : " + secaddrclue);
+        var secaddrclue = this.menunum;
+//        alert("lll~~~ secaddrclue 01 : " + secaddrclue);
 //        if (secaddrclue !== null || secaddrclue === "") {
 //          alert("lll~~~ secaddrclue : " + secaddrclue);
 //        }
-//        this.$store.dispatch(Constant.CONST_GET_SECADDR_SELECTED, {firstaddrval: parseInt(secaddrclue)});
+        this.$store.dispatch(Constant.INITIALIZE_CONTACT_ONE_FIRSTADDR, {firstaddrComponent: secaddrclue});
+        this.$store.dispatch(Constant.CONST_GET_SECADDR_SELECTED, {firstaddrval: parseInt(secaddrclue)});
       },
 
       click2Event: function () {
-        var secaddrclue = this.seldata01;
+        var secaddrclue = this.menunum;
 //        alert("lll~~~ 클릭 secaddrclue  : " + secaddrclue);
 //        this.$store.dispatch(Constant.CONST_GET_SECADDR_SELECTED, {firstaddrval: parseInt(secaddrclue)});
       },
-      region2Event: function () {
-        var secaddrclue = this.seldata01;
-        alert("lll~~~ secaddrclue 02 : " + secaddrclue);
+      region2Event: function (e) {
+        var secaddrclue02 = this.menunum02;
+//        alert("lll~~~ secaddrclue 02 : " + secaddrclue);
 //        alert("여기! 02" + this.addr.menunum);
 //        this.$store.dispatch();
-//        let secaddrclue = this.seldata02;
+//        let secaddrclue = this.menunum02;
 //        if (secaddrclue !== null || secaddrclue === "") {
 //          alert("여기! 01" + secaddrclue);
 //        this.$store.dispatch(Constant.CONST_GET_SECADDR_SELECTED, {firstaddrval: secaddrclue});
 //        }
-        alert("마지막");
+//        alert("마지막");
+        this.$store.dispatch(Constant.INITIALIZE_CONTACT_ONE_SECADDR, {secaddrComponent: secaddrclue02});
+      },
+      writePrj: function (event) {
+        this.seldata03 = event.target.value;
+        let thirdPrjName = this.seldata03.trim();
+//        alert("lll~~ " + thirdPrjName);
+        if (this.timer) {
+          clearTimeout(this.timer);
+          this.timer = null;
+        }
+        this.timer = setTimeout(() => {
+          this.$store.dispatch(Constant.INITIALIZE_CONTACT_ONE_THIRDPRJNAME, {thirdPrjNameComponent: thirdPrjName});
+        }, 500);
       }
     },
     watch: {
@@ -144,7 +163,7 @@
 //        }
 //
 //      }
-      seldata01: function (val) {
+      menunum: function (val) {
         if (val !== "") {
           this.$store.dispatch(Constant.CONST_GET_SECADDR_SELECTED, {firstaddrval: parseInt(val)});
 //          this.fetchContacts();

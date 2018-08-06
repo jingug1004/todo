@@ -49,6 +49,12 @@ export default {
     // state.searchname = "삼성1";
   },
 
+  /* POST */
+  // POST 1개 입력. 포스트는 뮤테이션에 없어도 되나봄. State에서 바로 Action으로 연결
+  // [Constant.CONST_POST_ONE]: (state) => {
+  //   // state.searchname = "삼성1";
+  // },
+
   // GET 수정, 입력 폼에서 취소
   [Constant.CONST_GET_CANCEL_FORM]: (state) => {
     state.currentView = null;
@@ -63,10 +69,27 @@ export default {
 
   [Constant.CONST_GET_SECADDR_SELECTED]: (state, payload) => { // GET select 주소 2 리스트 가져오기
     state.addrlist02 = payload.addrlist02;
-    console.log("lll~~~ mutations.js CONST_GET_FIRSTADDR_SELECTED 03 : " + state);
-    console.log("lll~~~ mutations.js CONST_GET_FIRSTADDR_SELECTED 04 : " + payload);
+    // console.log("lll~~~ mutations.js CONST_GET_FIRSTADDR_SELECTED 03 : " + state);
+    // console.log("lll~~~ mutations.js CONST_GET_FIRSTADDR_SELECTED 04 : " + payload);
     // state.firstaddr = "firstaddr";
+  },
+
+  /* INITIALIZE firstaddr */
+  [Constant.INITIALIZE_CONTACT_ONE_FIRSTADDR]: (state, payload) => {
+    state.boar.firstaddr = payload.firstaddrMutation;
+  },
+
+  /* INITIALIZE secaddr */
+  [Constant.INITIALIZE_CONTACT_ONE_SECADDR]: (state, payload) => {
+    state.boar.secaddr = payload.secaddrMutation;
+  },
+
+  /* INITIALIZE secaddr */
+  [Constant.INITIALIZE_CONTACT_ONE_THIRDPRJNAME]: (state, payload) => {
+    state.boar.title = payload.thirdPrjNameMutation;
   }
+
+
 
 
 }
