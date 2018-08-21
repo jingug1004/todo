@@ -30,6 +30,7 @@ export default {
 
   /* POST */
   CONST_POST_ONE: "constPostOne",                              // 1개 등록하기
+  CONST_LOAD_BOARDS: "constLoadBoards",                        // 글 클릭시 글 내용들 가져오기
 
   /* INITIALIZE */
   INITIALIZE_CONTACT_ONE_FIRSTADDR: "initializeContactOneFirstaddr",

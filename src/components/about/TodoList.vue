@@ -2,7 +2,7 @@
   <section>
     <transition-group name="list" tag="ul">
       <li v-for="(boar, index) in boardlist.board" :key="boar" class="shadow board">
-        <div class="containtodo">
+        <div class="containtodo" @click="loadBoards(boar.bno)">
           <div class="left-box">
             <i class="checkBtn fa fa-check" aria-hidden="true"></i>
           </div>
@@ -91,6 +91,11 @@
       pageChanged: function (page) {
         this.$router.push({name: 'about', query: {page: page}})
         /*name: 'board' 로 하면 없는 페이지 ?/page=2 나옴*/
+      },
+      loadBoards: function (no) {
+//        this.$router.push({name: 'loadboards', params: {no: no}})
+        this.$router.push({name: 'loadboards'})
+//        alert("클릭!" + no);
       }
     }
   };

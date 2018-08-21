@@ -30,6 +30,9 @@ export default {
     });
   },
 
+  constLoadBoards: function () {
+
+  },
 
   /* POST */
   constPostOne: function (boar) {   // 1개 등록하기

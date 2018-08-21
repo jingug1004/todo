@@ -17,9 +17,10 @@ export default {
   DELETE: BASE_URL + "/contacts/${no}",
   //연락처 사진 업로드->변경
   UPDATE_PHOTO: BASE_URL + "/contacts/${no}/photo",
-  //
-  //
-  // GET_ALL: BASE_URL + "/getall"
+
+
+
+
 
   /* GET */
   GET_ALL: BASE_URL + "/getall", // 전체 가져오기
@@ -28,6 +29,7 @@ export default {
 
   GET_SECADDR_SELECTED: BASE_URL + "/getsecaddr", // secaddr v-for 2nd 실렉트문 가져오기
 
+  GET_ONE_LOAD_BOARDS: BASE_URL + "/loadboards/${no}", // 글 클릭시 글 내용들 가져오기
 
   /* POST */
   POST_ONE: BASE_URL + "/postone",                // 1개 등록하기

@@ -53,7 +53,7 @@
   import store from "../../store/index";
 
   export default {
-    name: "contactForm",
+    name: "todoInputForm",
     data: function () {
       return {
         mode: "add",
